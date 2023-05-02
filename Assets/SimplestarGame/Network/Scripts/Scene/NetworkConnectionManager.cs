@@ -75,7 +75,7 @@ namespace SimplestarGame
             DontDestroyOnLoad(runner);
             runner.name = "[Network]Runner";
             sceneManager = runner.GetComponents(typeof(MonoBehaviour)).OfType<INetworkSceneManager>().FirstOrDefault();
-            if (null == sceneManager)
+            if (sceneManager == null)
             {
                 Debug.Log($"NetworkRunner does not have any component implementing {nameof(INetworkSceneManager)} interface, adding {nameof(NetworkSceneManagerDefault)}.", runner);
                 sceneManager = runner.gameObject.AddComponent<NetworkSceneManagerDefault>();

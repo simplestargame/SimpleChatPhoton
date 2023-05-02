@@ -24,7 +24,7 @@ namespace SimplestarGame
             int token = new Guid(Runner.GetPlayerConnectionToken(playerRef)).GetHashCode();
             var agentList = FindObjectsOfType<PlayerAgent>();
             var sceneAgent = agentList.FirstOrDefault(agent => agent.Token == token);
-            if (null != sceneAgent)
+            if (sceneAgent != null)
             {
                 sceneAgent.Object.AssignInputAuthority(playerRef);
                 player.ActiveAgent = sceneAgent;
@@ -48,11 +48,11 @@ namespace SimplestarGame
         {
             this.name = "[Network]Game";
             SceneContext.Instance.Game = this;
-            if (null != SceneContext.Instance.PlayerInput)
+            if (SceneContext.Instance.PlayerInput != null)
             {
                 Runner.AddCallbacks(SceneContext.Instance.PlayerInput);
             }
-            if (null != SceneContext.Instance.hostClientText)
+            if (SceneContext.Instance.hostClientText != null)
             {
                 SceneContext.Instance.hostClientText.text = HasStateAuthority ? "Host" : "Client";
             }
@@ -82,7 +82,7 @@ namespace SimplestarGame
 
         void DespawnPlayerAgent(NetworkPlayer player)
         {
-            if (null != player.ActiveAgent)
+            if (player.ActiveAgent != null)
             {
                 Runner.Despawn(player.ActiveAgent.Object);
                 player.ActiveAgent = null;

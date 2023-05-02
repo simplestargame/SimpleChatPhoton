@@ -6,7 +6,7 @@ namespace SimplestarGame
     {
         void Update()
         {
-            if (null == SceneContext.Instance.fpsText)
+            if (SceneContext.Instance.fpsText == null)
             {
                 return;
             }

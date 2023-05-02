@@ -14,7 +14,7 @@ namespace SimplestarGame
         [Rpc(sources: RpcSources.InputAuthority, targets: RpcTargets.StateAuthority)]
         public void RPC_SendMessage(string message)
         {
-            if (null != this.textMeshPro)
+            if (this.textMeshPro != null)
             {
                 this.textMeshPro.text = message;
             }
@@ -28,7 +28,7 @@ namespace SimplestarGame
 
         void ChangeMessage()
         {
-            if (null != this.textMeshPro)
+            if (this.textMeshPro != null)
             {
                 this.textMeshPro.text = this.Message.Value;
             }
@@ -41,7 +41,7 @@ namespace SimplestarGame
 
         void ChangedColor()
         {
-            if (null != this.textMeshPro)
+            if (this.textMeshPro != null)
             {
                 this.textMeshPro.color = this.Color;
             }
@@ -51,7 +51,7 @@ namespace SimplestarGame
         {
             this.Color = color;
             this.Message = "Hi.";
-            if (null != this.textMeshPro)
+            if (this.textMeshPro != null)
             {
                 this.textMeshPro.text = this.Message.Value;
             }
@@ -60,15 +60,15 @@ namespace SimplestarGame
         public override void Spawned()
         {
             this.name = "[Network]PlayerAgent";
-            if (null == this.mainCamera)
+            if (this.mainCamera == null)
             {
                 this.mainCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
             }
-            if (null != this.textMeshPro)
+            if (this.textMeshPro != null)
             {
                 this.textMeshPro.text = this.Message.Value;
             }
-            if (null != SceneContext.Instance.buttonSend)
+            if (SceneContext.Instance.buttonSend != null)
             {
                 SceneContext.Instance.buttonSend.onPressed += this.OnSend;
             }
@@ -80,9 +80,9 @@ namespace SimplestarGame
             {
                 return;
             }
-            if (null != SceneContext.Instance.inputField)
+            if (SceneContext.Instance.inputField != null)
             {
-                if (null != this.textMeshPro)
+                if (this.textMeshPro != null)
                 {
                     this.textMeshPro.text = SceneContext.Instance.inputField.text;
                 }
